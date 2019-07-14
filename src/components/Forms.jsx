@@ -1,9 +1,10 @@
 import React from "react";
 
 import ComparisonTable from "./ComparisonTable";
-import LoginForm from "./formik/LoginForm";
-import LoginFormYup from "./formik/LoginFormYup";
-import SignUpFrom from "./formik/SignUpForm";
+import SimpleForm from "./formik/SimpleForm";
+import FormWithYup from "./formik/FormWithYup";
+import FormWithFetch from "./formik/FormWithFetch";
+import FormWithDynamicInput from "./formik/FormWithDynamicInput";
 
 const styles = {
   form: {
@@ -17,13 +18,16 @@ const Forms = () => {
         <ComparisonTable />
       </div>
       <div style={styles.form}>
-        <LoginForm />
+        <SimpleForm />
       </div>
       <div style={styles.form}>
-        <LoginFormYup />
+        <FormWithYup />
       </div>
       <div style={styles.form}>
-        <SignUpFrom />
+        <FormWithFetch />
+      </div>
+      <div style={styles.form}>
+        <FormWithDynamicInput />
       </div>
     </div>
   );

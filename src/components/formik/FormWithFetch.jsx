@@ -74,9 +74,7 @@ const SignUpForm = () => {
 
   return (
     <div>
-      <div style={styles.title}>
-        Formik Signup Form (Fetch data on the form)
-      </div>
+      <div style={styles.title}>Sign Up Form (Fetch data on the form)</div>
       <Formik
         initialValues={getInitialValues()}
         validationSchema={LoginSchema}

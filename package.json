@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "formik": "^1.5.7",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-markdown": "^4.1.0",
@@ -12,7 +13,10 @@
     "rmwc": "^5.5.2",
     "yup": "^0.27.0"
   },
+  "homepage": "https://hosseintalebi.github.io/formik-vs-react-final-form",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -32,7 +32,7 @@ const LoginSchema = Yup.object().shape({
 const LoginFormYup = () => {
   return (
     <div>
-      <div style={styles.title}>Formik Login Form (Schema Validation)</div>
+      <div style={styles.title}>Login Form (Schema Validation with Yup)</div>
       <Formik
         initialValues={getInitialValues()}
         validationSchema={LoginSchema}

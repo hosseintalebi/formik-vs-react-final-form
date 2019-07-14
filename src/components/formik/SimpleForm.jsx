@@ -19,7 +19,7 @@ const styles = {
 };
 const LoginForm = () => (
   <div>
-    <div style={styles.title}>Formik Login Form</div>
+    <div style={styles.title}>Simple Login Form</div>
     <Formik
       initialValues={getInitialValues()}
       validate={validate}
