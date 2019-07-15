@@ -12,19 +12,8 @@ import { Button, TextField, Select } from "../UI-Kit";
 import useCountries from "../../hooks/useCountries";
 import userRegions from "../../hooks/userRegions";
 
-const styles = {
-  title: {
-    fontWeight: 500,
-    color: "rgba(45,45,45,1)",
-    margin: "40px 10px 20px"
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center"
-  }
-};
+// Styles
+import commonStyles from "../styles";
 
 // Local Selectors
 const countiesOptions$ = createSelector(
@@ -74,14 +63,13 @@ const SignUpForm = () => {
 
   return (
     <div>
-      <div style={styles.title}>Sign Up Form (Fetch data on the form)</div>
       <Formik
         initialValues={getInitialValues()}
         validationSchema={LoginSchema}
         onSubmit={onSubmit}
       >
         {({ errors, touched, isSubmitting, handleChange }) => (
-          <Form style={styles.form}>
+          <Form style={commonStyles.form}>
             <FormikRMWCTextField
               type="text"
               name="firstName"

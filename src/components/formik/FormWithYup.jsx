@@ -5,19 +5,8 @@ import * as Yup from "yup";
 // RMWC Components
 import { Button, TextField } from "../UI-Kit";
 
-const styles = {
-  title: {
-    fontWeight: 500,
-    color: "rgba(45,45,45,1)",
-    margin: "40px 10px 20px"
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center"
-  }
-};
+// Styles
+import commonStyles from "../styles";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -32,7 +21,6 @@ const LoginSchema = Yup.object().shape({
 const LoginFormYup = () => {
   return (
     <div>
-      <div style={styles.title}>Login Form (Schema Validation with Yup)</div>
       <Formik
         initialValues={getInitialValues()}
         validationSchema={LoginSchema}
@@ -46,7 +34,7 @@ const LoginFormYup = () => {
           handleBlur,
           isSubmitting
         }) => (
-          <Form style={styles.form}>
+          <Form style={commonStyles.form}>
             <TextField
               type="email"
               name="email"

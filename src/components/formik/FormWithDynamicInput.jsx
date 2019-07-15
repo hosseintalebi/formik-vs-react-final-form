@@ -7,23 +7,15 @@ import { Form, Formik, Field, FieldArray } from "formik";
 import { Button, TextField } from "../UI-Kit";
 import { IconButton } from "rmwc";
 
+// Styles
+import commonStyles from "../styles";
 const styles = {
-  title: {
-    fontWeight: 500,
-    color: "rgba(45,45,45,1)",
-    margin: "40px 10px 20px"
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center"
-  },
   todoItem: {
     display: "flex"
   },
   todoRemoveBtn: {
-    marginTop: 15
+    marginTop: 15,
+    color: "rgba(45,45,45,0.9)"
   }
 };
 
@@ -35,12 +27,11 @@ export default class FormWithDynamicInput extends React.Component {
   render() {
     return (
       <div>
-        <div style={styles.title}>Add Dynamic Inputs</div>
         <Formik
           initialValues={initialValues}
           onSubmit={this.onSubmit}
           render={({ values, errors, touched }) => (
-            <Form style={styles.form}>
+            <Form style={commonStyles.form}>
               <FieldArray
                 name="todos"
                 render={({ insert, remove, push }) => (

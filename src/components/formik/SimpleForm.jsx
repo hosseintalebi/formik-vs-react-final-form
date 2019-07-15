@@ -4,22 +4,11 @@ import { Formik } from "formik";
 // RMWC Components
 import { Button, TextField } from "../UI-Kit";
 
-const styles = {
-  title: {
-    fontWeight: 500,
-    color: "rgba(45,45,45,1)",
-    margin: "40px 10px 20px"
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center"
-  }
-};
+// Styles
+import commonStyles from "../styles";
+
 const LoginForm = () => (
   <div>
-    <div style={styles.title}>Simple Login Form</div>
     <Formik
       initialValues={getInitialValues()}
       validate={validate}
@@ -34,7 +23,7 @@ const LoginForm = () => (
         handleSubmit,
         isSubmitting
       }) => (
-        <form onSubmit={handleSubmit} style={styles.form}>
+        <form onSubmit={handleSubmit} style={commonStyles.form}>
           <TextField
             type="email"
             name="email"
