@@ -9,6 +9,7 @@
     "react-dom": "^16.8.6",
     "react-markdown": "^4.1.0",
     "react-scripts": "3.0.1",
+    "react-syntax-highlighter": "^11.0.2",
     "reselect": "^4.0.0",
     "rmwc": "^5.5.2",
     "yup": "^0.27.0"
