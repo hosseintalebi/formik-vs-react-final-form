@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/formik-vs-react-final-form/precache-manifest.98f2d20f3009a0420bdc04b8e5d67aa3.js"
+  "/formik-vs-react-final-form/precache-manifest.a55bd9bdeeeeadc32dd907452a0f0592.js"
 );
 
 self.addEventListener('message', (event) => {
