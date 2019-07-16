@@ -11,6 +11,7 @@ import { IconButton } from "rmwc";
 
 // Styles
 import commonStyles from "../styles";
+import { access } from "fs";
 const styles = {
   todoItem: {
     display: "flex"
@@ -25,6 +26,8 @@ const initialValues = {
   todos: [{ item: "shopping" }, { item: "" }]
 };
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 export default class FormWithDynamicInput extends React.Component {
   render() {
     return (
@@ -32,7 +35,6 @@ export default class FormWithDynamicInput extends React.Component {
         <Form
           initialValues={initialValues}
           onSubmit={this.onSubmit}
-          validate={this.validate}
           mutators={{
             ...arrayMutators
           }}
@@ -42,25 +44,22 @@ export default class FormWithDynamicInput extends React.Component {
             form: {
               mutators: { push, pop }
             }, // injected from final-form-arrays above
-            pristine,
-            form,
-            submitting,
-            values
+            submitting
           }) => (
             <form onSubmit={handleSubmit} style={commonStyles.form}>
               <FieldArray name="todos">
                 {({ fields }) => (
                   <div>
-                    {_.map(fields, (todo, index) => (
+                    {fields.map((name, index) => (
                       <div style={styles.todoItem} key={index}>
-                        <Field name={\`\${ todo }.item\`}>
+                        <Field name={\`\${ name }.item\`} validate={this.validate}>
                           {({ input, meta }) => (
                             <TextField
                               {...input}
                               type="text"
                               error={meta.error}
                               touched={meta.touched}
-                              label={"First Name"}
+                              label={"Todo"}
                             />
                           )}
                         </Field>
@@ -96,12 +95,15 @@ export default class FormWithDynamicInput extends React.Component {
     );
   }
 
-  validate = values => {};
-  onSubmit = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
+  validate = value => {
+    if (!value) {
+      return "Required";
+    }
+  };
+
+  onSubmit = async values => {
+    await sleep(400);
+    window.alert(JSON.stringify(values, 0, 2));
   };
 }
 `;
