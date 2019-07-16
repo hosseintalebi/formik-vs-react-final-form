@@ -161,7 +161,7 @@ const Forms = () => {
         rffCode={
           <SyntaxHighlight
             codeString={formWithFetchRFF}
-            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/FormWithFetch.jsx"
+            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/react-final-form/FormWithFetch.jsx"
           />
         }
       />
@@ -179,7 +179,7 @@ const Forms = () => {
         rffCode={
           <SyntaxHighlight
             codeString={formWithDynamicInputRFF}
-            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/FormWithFetch.jsx"
+            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/react-final-form/FormWithDynamicInput.jsx"
           />
         }
       />
@@ -190,7 +190,7 @@ const Forms = () => {
         rffCode={
           <SyntaxHighlight
             codeString={formWithErrorFocusRFF}
-            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/FormWithFetch.jsx"
+            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/react-final-form/FormWithErrorFocus.jsx"
           />
         }
       />
@@ -202,13 +202,13 @@ const Forms = () => {
         formikCode={
           <SyntaxHighlight
             codeString={wizardFormik}
-            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/Wizard.jsx"
+            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/WizardForm.jsx"
           />
         }
         rffCode={
           <SyntaxHighlight
             codeString={wizardRFF}
-            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/Wizard.jsx"
+            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/react-final-form/WizardForm.jsx"
           />
         }
       />
