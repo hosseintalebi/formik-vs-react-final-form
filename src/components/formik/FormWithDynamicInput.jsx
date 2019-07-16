@@ -4,7 +4,7 @@ import _ from "lodash";
 import { Form, Formik, Field, FieldArray } from "formik";
 
 // RMWC Components
-import { Button, TextField } from "../UI-Kit";
+import { Button, TextField } from "../UI-kit";
 import { IconButton } from "rmwc";
 
 // Styles

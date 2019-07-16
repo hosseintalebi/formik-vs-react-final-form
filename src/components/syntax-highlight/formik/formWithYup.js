@@ -3,7 +3,7 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 
 // RMWC Components
-import { Button, TextField } from "../UI-Kit";
+import { Button, TextField } from "../UI-kit";
 
 // Styles
 import commonStyles from "../styles";

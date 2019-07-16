@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Field, ErrorMessage } from "formik";
 
 // RMWC Components
-import { Button, TextField, Select } from "../UI-Kit";
+import { Button, TextField, Select } from "../UI-kit";
 
 // Styles
 const styles = {

@@ -1,4 +1,4 @@
-import React from "react";
+const codeString = `import React from "react";
 import { Formik } from "formik";
 
 // RMWC Components
@@ -77,3 +77,5 @@ const onSubmit = (values, { setSubmitting }) => {
 };
 
 export default LoginForm;
+`;
+export default codeString;

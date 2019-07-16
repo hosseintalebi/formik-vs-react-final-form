@@ -20,7 +20,7 @@ const styles = {
   },
   trh: {
     padding: "10px 0",
-    background: "rgba(98, 42, 109, 0.3)",
+    background: "rgba(233, 223, 250)",
     color: `rgba(45,45,45,0.8)`
   },
   td: {
@@ -35,24 +35,26 @@ const comparisionData = {
   formik: {
     name: "Formik",
     size: {
-      minified: "43 kB",
-      minifiedGZipped: "12.6 kB"
+      minifiedGZipped: "12.6 kB gzipped"
     },
     typescript: "✓",
     asyncValidation: "✓",
     schemaValidation: "✓",
+    errorFocus: "✗",
+    hooks: "✗",
     popularity: "428,133",
     wizard: "✓"
   },
   finalForm: {
     name: "React Final Form",
     size: {
-      minified: "8.1 kB",
-      minifiedGZipped: "3.1 kB"
+      minifiedGZipped: "7.5 kB gzipped"
     },
     typescript: "✓",
     asyncValidation: "✓",
     schemaValidation: "✗",
+    errorFocus: "✓",
+    hooks: "✓",
     popularity: "83,674",
     wizard: "✓"
   }
@@ -70,11 +72,9 @@ const Table = () => {
         <tr style={styles.trh}>
           <th style={styles.th}>Size</th>
           <td style={styles.td}>
-            <span>{formik.size.minified}</span>
             <span>{formik.size.minifiedGZipped}</span>
           </td>
           <td style={styles.td}>
-            <span>{finalForm.size.minified}</span>
             <span>{finalForm.size.minifiedGZipped}</span>
           </td>
         </tr>
@@ -94,6 +94,21 @@ const Table = () => {
           <td style={styles.td}>{finalForm.schemaValidation}</td>
         </tr>
         <tr style={styles.trh}>
+          <th style={styles.th}>On Submit Error Focus</th>
+          <td style={styles.td}>{formik.errorFocus}</td>
+          <td style={styles.td}>{finalForm.errorFocus}</td>
+        </tr>
+        <tr style={styles.tr}>
+          <th style={styles.th}>Hooks Support</th>
+          <td style={styles.td}>{formik.hooks}</td>
+          <td style={styles.td}>{finalForm.hooks}</td>
+        </tr>
+        <tr style={styles.trh}>
+          <th style={styles.th}>Wizard</th>
+          <td style={styles.td}>{formik.wizard}</td>
+          <td style={styles.td}>{finalForm.wizard}</td>
+        </tr>
+        <tr style={styles.tr}>
           <th style={styles.th}>Popularity</th>
           <td style={styles.td}>
             <div>
@@ -107,11 +122,6 @@ const Table = () => {
               <div style={styles.secondaryInfo}>Weekly Download</div>
             </div>
           </td>
-        </tr>
-        <tr style={styles.tr}>
-          <th style={styles.th}>Wizard</th>
-          <td style={styles.td}>{formik.wizard}</td>
-          <td style={styles.td}>{finalForm.wizard}</td>
         </tr>
       </tbody>
     </table>

@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Components
 import { TabBar, Tab } from "rmwc";
-
-// Forms
 import ComparisonTable from "./ComparisonTable";
-import SimpleForm from "./formik/SimpleForm";
-import FormWithYup from "./formik/FormWithYup";
-import FormWithFetch from "./formik/FormWithFetch";
-import FormWithDynamicInput from "./formik/FormWithDynamicInput";
-import Wizard from "./formik/Wizard";
+import SyntaxHighlight from "./syntax-highlight/SyntaxHighligh";
 
-// Syntax Highligher
-import SyntaxHighlight from "./syntaxHighlight/SyntaxHighligh";
-import simpleFormCode from "./syntaxHighlight/formik/simpleForm";
-import formWithDynamicInput from "./syntaxHighlight/formik/formWithDynamicInput";
-import formWithFetch from "./syntaxHighlight/formik/formWithFetch";
-import formWithYup from "./syntaxHighlight/formik/formWithYup";
-import wizard from "./syntaxHighlight/formik/wizard";
+// Formik Forms
+import SimpleFormFormik from "./formik/SimpleForm";
+import FormWithYupFormik from "./formik/FormWithYup";
+import FormWithFetchFormik from "./formik/FormWithFetch";
+import FormWithDynamicInputFormik from "./formik/FormWithDynamicInput";
+import WizardFormik from "./formik/Wizard";
+
+// React Final Forms
+import SimpleFormRFF from "./react-final-form/SimpleForm";
+
+// Sourc String Formik
+import simpleFormCodeFormik from "./syntax-highlight/formik/simpleForm";
+import formWithYupFormik from "./syntax-highlight/formik/formWithYup";
+import formWithFetchFormik from "./syntax-highlight/formik/formWithFetch";
+import formWithDynamicInputFormik from "./syntax-highlight/formik/formWithDynamicInput";
+import wizardFormik from "./syntax-highlight/formik/wizard";
+
+// Sourc String React Final Form
+import simpleFormCodeRFF from "./syntax-highlight/react-final-form/simpleForm";
 
 // Styles
 const styles = {
@@ -92,10 +98,10 @@ const styles = {
     justifyContent: "center",
     alignItems: "center"
   },
-  tabBar: {
-    width: 320,
-    margin: "0 0 -8px auto"
-  }
+  tabBar: nTabs => ({
+    margin: "0 0 -8px auto",
+    width: nTabs === 1 ? 160 : 320
+  })
 };
 
 const Forms = () => {
@@ -104,87 +110,119 @@ const Forms = () => {
       <div style={styles.table}>
         <ComparisonTable />
       </div>
-      {renderForm({
-        title: "Simple form",
-        subtitle: "Just a simple example of a form with validation.",
-        form: <SimpleForm />,
-        code: (
+      <FormRender
+        title="Simple form"
+        subtitle="Just a simple example of a form with validation."
+        formikForm={<SimpleFormFormik />}
+        rffForm={<SimpleFormRFF />}
+        formikCode={
           <SyntaxHighlight
-            codeString={simpleFormCode}
+            codeString={simpleFormCodeFormik}
             codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/SimpleForm.jsx"
           />
-        )
-      })}
-      {renderForm({
-        title: "Form with schema validation",
-        subtitle:
-          "You can combine normal validation with schema validation using Yup.",
-        form: <FormWithYup />,
-        code: (
+        }
+        rffCode={
           <SyntaxHighlight
-            codeString={formWithYup}
+            codeString={simpleFormCodeRFF}
+            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/SimpleForm.jsx"
+          />
+        }
+      />
+      <FormRender
+        title="Form with schema validation"
+        subtitle="You can combine normal validation with schema validation using Yup."
+        formikForm={<FormWithYupFormik />}
+        formikCode={
+          <SyntaxHighlight
+            codeString={formWithYupFormik}
             codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/FormWithYup.jsx"
           />
-        )
-      })}
-      {renderForm({
-        title: "Form with network request",
-        subtitle: "Fetch data based on the value of certain input.",
-        form: <FormWithFetch />,
-        code: (
+        }
+      />
+      <FormRender
+        title="Form with network request"
+        subtitle="Fetch data based on the value of certain input."
+        formikForm={<FormWithFetchFormik />}
+        formikCode={
           <SyntaxHighlight
-            codeString={formWithFetch}
+            codeString={formWithFetchFormik}
             codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/FormWithFetch.jsx"
           />
-        )
-      })}
-      {renderForm({
-        title: "Dynamic form",
-        subtitle: "Add new inputs dynamically to the form.",
-        form: <FormWithDynamicInput />,
-        code: (
+        }
+      />
+      <FormRender
+        title="Dynamic form"
+        subtitle="Add new inputs dynamically to the form."
+        formikForm={<FormWithDynamicInputFormik />}
+        formikCode={
           <SyntaxHighlight
-            codeString={formWithDynamicInput}
+            codeString={formWithDynamicInputFormik}
             codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/FormWithDynamicInput.jsx"
           />
-        )
-      })}
-      {renderForm({
-        title: "Form wizard",
-        subtitle: "Multi step form with validation.",
-        form: <Wizard />,
-        code: (
+        }
+      />
+      <FormRender
+        title="Form wizard"
+        subtitle="Multi step form with validation."
+        formikForm={<WizardFormik />}
+        formikCode={
           <SyntaxHighlight
-            codeString={wizard}
+            codeString={wizardFormik}
             codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/Wizard.jsx"
           />
-        )
-      })}
+        }
+      />
     </div>
   );
 };
 
-const renderForm = ({ title, subtitle, form, code }) => (
-  <div style={styles.item}>
-    <div style={styles.titleWapper}>
-      <div style={styles.title}>{title}</div>
-      <div style={styles.subtitle}>{subtitle}</div>
-    </div>
-    <div style={styles.formAndCodeWrapper}>
-      <TabBar style={styles.tabBar}>
-        <Tab>Formik</Tab>
-        <Tab>React Final Form</Tab>
-      </TabBar>
-      <div style={styles.formAndCode}>
-        <div style={styles.formWrapper}>
-          <div style={styles.form}>{form}</div>
-        </div>
-        <div style={styles.codeWrapper}>
-          <div style={styles.code}>{code}</div>
+const FormRender = ({
+  title,
+  subtitle,
+  formikForm,
+  rffForm,
+  formikCode,
+  rffCode
+}) => {
+  const [activeTab, setActiveTab] = useState(0);
+  const hasFormik = formikCode != null;
+  const hasRFF = rffCode != null;
+  const tabs = getTabs({ hasFormik, hasRFF });
+  const form = activeTab === 0 && hasFormik ? formikForm : rffForm;
+  const code = activeTab === 0 && hasFormik ? formikCode : rffCode;
+
+  return (
+    <div style={styles.item}>
+      <div style={styles.titleWapper}>
+        <div style={styles.title}>{title}</div>
+        <div style={styles.subtitle}>{subtitle}</div>
+      </div>
+      <div style={styles.formAndCodeWrapper}>
+        <TabBar
+          style={styles.tabBar(tabs.length)}
+          activeTabIndex={activeTab}
+          onActivate={evt => setActiveTab(evt.detail.index)}
+        >
+          {tabs}
+        </TabBar>
+        <div style={styles.formAndCode}>
+          <div style={styles.formWrapper}>
+            <div style={styles.form}>{form}</div>
+          </div>
+          <div style={styles.codeWrapper}>
+            <div style={styles.code}>{code}</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
+
+const getTabs = ({ hasFormik, hasRFF }) => {
+  const tabs = [];
+  hasFormik && tabs.push(<Tab>Formik</Tab>);
+  hasRFF && tabs.push(<Tab>React Final Form</Tab>);
+  return tabs;
+};
 
 export default Forms;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik } from "formik";
+import { Form, Field } from "react-final-form";
 
 // RMWC Components
 import { Button, TextField } from "../UI-kit";
@@ -8,50 +8,41 @@ import { Button, TextField } from "../UI-kit";
 import commonStyles from "../styles";
 
 const LoginForm = () => (
-  <Formik
+  <Form
     initialValues={getInitialValues()}
     validate={validate}
     onSubmit={onSubmit}
   >
-    {({
-      values,
-      errors,
-      touched,
-      handleChange,
-      handleBlur,
-      handleSubmit,
-      isSubmitting
-    }) => (
+    {({ handleSubmit, submitting }) => (
       <form onSubmit={handleSubmit} style={commonStyles.form}>
-        <TextField
-          type="email"
+        <Field
           name="email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email}
-          error={errors.email}
-          touched={touched.email}
-          label={"Email"}
+          render={({ input, meta }) => (
+            <TextField
+              {...input}
+              type="email"
+              error={meta.error}
+              touched={meta.touched}
+              label={"Email"}
+            />
+          )}
         />
-        <TextField
-          type="password"
+        <Field
           name="password"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password}
-          error={errors.password}
-          touched={touched.password}
-          label={"Pasword"}
+          render={({ input, meta }) => (
+            <TextField
+              {...input}
+              type="password"
+              error={meta.error}
+              touched={meta.touched}
+              label={"Pasword"}
+            />
+          )}
         />
-        <Button
-          label="Submit"
-          type="submit"
-          disabled={isSubmitting}
-          unelevated
-        />
+        <Button disabled={submitting} label="Submit" type="submit" unelevated />
       </form>
     )}
-  </Formik>
+  </Form>
 );
 
 const getInitialValues = () => ({ email: "", password: "" });

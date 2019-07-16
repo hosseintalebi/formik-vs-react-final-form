@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { createSelector } from "reselect";
 
 // RMWC Components
-import { Button, TextField, Select } from "../UI-Kit";
+import { Button, TextField, Select } from "../UI-kit";
 
 // Hooks
 import useCountries from "../../hooks/useCountries";
