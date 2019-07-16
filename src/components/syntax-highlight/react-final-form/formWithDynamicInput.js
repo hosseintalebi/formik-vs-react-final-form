@@ -1,7 +1,9 @@
 const codeString = `import React from "react";
 import * as Yup from "yup";
 import _ from "lodash";
-import { Form, Formik, Field, FieldArray } from "formik";
+import { Form, Field } from "react-final-form";
+import arrayMutators from "final-form-arrays";
+import { FieldArray } from "react-final-form-arrays";
 
 // RMWC Components
 import { Button, TextField } from "../UI-kit";
@@ -23,44 +25,50 @@ const initialValues = {
   todos: [{ item: "shopping" }, { item: "" }]
 };
 
-const ValidationSchema = Yup.object({
-  todos: Yup.array().of(
-    Yup.object({
-      item: Yup.string().required("Required")
-    })
-  )
-});
-
 export default class FormWithDynamicInput extends React.Component {
   render() {
     return (
       <div>
-        <Formik
+        <Form
           initialValues={initialValues}
-          validationSchema={ValidationSchema}
           onSubmit={this.onSubmit}
+          validate={this.validate}
+          mutators={{
+            ...arrayMutators
+          }}
         >
-          {({ values, errors, touched, isSubmitting }) => (
-            <Form style={commonStyles.form}>
+          {({
+            handleSubmit,
+            form: {
+              mutators: { push, pop }
+            }, // injected from final-form-arrays above
+            pristine,
+            form,
+            submitting,
+            values
+          }) => (
+            <form onSubmit={handleSubmit} style={commonStyles.form}>
               <FieldArray name="todos">
-                {({ remove, push }) => (
+                {({ fields }) => (
                   <div>
-                    {_.map(values.todos, (todo, index) => (
+                    {_.map(fields, (todo, index) => (
                       <div style={styles.todoItem} key={index}>
-                        <GroupItemTextField
-                          type="text"
-                          name={\`todos.\${ index }.item\`}
-                          index={index}
-                          label="Todo"
-                          groupName="todos"
-                          errors={errors}
-                          touched={touched}
-                        />
+                        <Field name={\`\${ todo }.item\`}>
+                          {({ input, meta }) => (
+                            <TextField
+                              {...input}
+                              type="text"
+                              error={meta.error}
+                              touched={meta.touched}
+                              label={"First Name"}
+                            />
+                          )}
+                        </Field>
                         <IconButton
                           style={styles.todoRemoveBtn}
                           icon={"close"}
                           type="button"
-                          onClick={() => remove(index)}
+                          onClick={() => pop("todos")}
                         />
                       </div>
                     ))}
@@ -68,7 +76,7 @@ export default class FormWithDynamicInput extends React.Component {
                       label="Add Todo"
                       icon="add"
                       type="button"
-                      onClick={() => push({ item: "" })}
+                      onClick={() => push("todos", { item: "" })}
                     />
                   </div>
                 )}
@@ -78,16 +86,17 @@ export default class FormWithDynamicInput extends React.Component {
                 unelevated
                 type="submit"
                 label="Submit"
-                disabled={isSubmitting}
+                disabled={submitting}
                 onClick={this.submit}
               />
-            </Form>
+            </form>
           )}
-        </Formik>
+        </Form>
       </div>
     );
   }
 
+  validate = values => {};
   onSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
       alert(JSON.stringify(values, null, 2));
@@ -95,29 +104,5 @@ export default class FormWithDynamicInput extends React.Component {
     }, 400);
   };
 }
-
-const GroupItemTextField = ({
-  groupName,
-  name,
-  type,
-  errors,
-  touched,
-  label,
-  index
-}) => (
-  <Field
-    type={type}
-    name={name}
-    render={({ field }) => (
-      <TextField
-        {...field}
-        type={type}
-        error={_.get(errors, [groupName, index, "item"], null)}
-        touched={_.get(touched, [groupName, index, "item"], false)}
-        label={label}
-      />
-    )}
-  />
-);
 `;
 export default codeString;

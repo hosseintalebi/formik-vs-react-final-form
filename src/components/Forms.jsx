@@ -15,6 +15,7 @@ import WizardFormik from "./formik/Wizard";
 // React Final Forms
 import SimpleFormRFF from "./react-final-form/SimpleForm";
 import FormWithFetchRFF from "./react-final-form/FormWithFetch";
+import FormWithDynamicInputRFF from "./react-final-form/FormWithDynamicInput";
 
 // Sourc String Formik
 import simpleFormCodeFormik from "./syntax-highlight/formik/simpleForm";
@@ -26,6 +27,7 @@ import wizardFormik from "./syntax-highlight/formik/wizard";
 // Sourc String React Final Form
 import simpleFormCodeRFF from "./syntax-highlight/react-final-form/simpleForm";
 import formWithFetchRFF from "./syntax-highlight/react-final-form/formWithFetch";
+import formWithDynamicInputRFF from "./syntax-highlight/react-final-form/formWithDynamicInput";
 
 // Styles
 const styles = {
@@ -163,10 +165,17 @@ const Forms = () => {
         title="Dynamic form"
         subtitle="Add new inputs dynamically to the form."
         formikForm={<FormWithDynamicInputFormik />}
+        rffForm={<FormWithDynamicInputRFF />}
         formikCode={
           <SyntaxHighlight
             codeString={formWithDynamicInputFormik}
             codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/FormWithDynamicInput.jsx"
+          />
+        }
+        rffCode={
+          <SyntaxHighlight
+            codeString={formWithDynamicInputRFF}
+            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/FormWithFetch.jsx"
           />
         }
       />

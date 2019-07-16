@@ -40,7 +40,7 @@ export default class FormWithDynamicInput extends React.Component {
           validationSchema={ValidationSchema}
           onSubmit={this.onSubmit}
         >
-          {({ values, errors, touched }) => (
+          {({ values, errors, touched, isSubmitting }) => (
             <Form style={commonStyles.form}>
               <FieldArray name="todos">
                 {({ remove, push }) => (
@@ -78,6 +78,7 @@ export default class FormWithDynamicInput extends React.Component {
                 unelevated
                 type="submit"
                 label="Submit"
+                disabled={isSubmitting}
                 onClick={this.submit}
               />
             </Form>
@@ -86,22 +87,6 @@ export default class FormWithDynamicInput extends React.Component {
       </div>
     );
   }
-
-  getInitialValues = todos =>
-    _.reduce(
-      todos,
-      (acc, todo, index) => ({
-        ...acc,
-        [`${this.todoPrefix}${index}`]: todo.item
-      }),
-      {}
-    );
-
-  addTodo = () => {
-    this.setState({
-      todos: [...this.state.todos, { item: "" }]
-    });
-  };
 
   onSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
