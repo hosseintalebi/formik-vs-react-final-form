@@ -23,30 +23,38 @@ const initialValues = {
   todos: [{ item: "shopping" }, { item: "" }]
 };
 
+const ValidationSchema = Yup.object({
+  todos: Yup.array().of(
+    Yup.object({
+      item: Yup.string().required("Required")
+    })
+  )
+});
+
 export default class FormWithDynamicInput extends React.Component {
   render() {
     return (
       <div>
         <Formik
           initialValues={initialValues}
+          validationSchema={ValidationSchema}
           onSubmit={this.onSubmit}
-          render={({ values, errors, touched }) => (
+        >
+          {({ values, errors, touched }) => (
             <Form style={commonStyles.form}>
-              <FieldArray
-                name="todos"
-                render={({ insert, remove, push }) => (
+              <FieldArray name="todos">
+                {({ remove, push }) => (
                   <div>
                     {_.map(values.todos, (todo, index) => (
                       <div style={styles.todoItem} key={index}>
                         <GroupItemTextField
                           type="text"
-                          name={\`todos.\${index}.item\`}
+                          name={\`todos.\${ index }.item\`}
                           index={index}
                           label="Todo"
                           groupName="todos"
                           errors={errors}
                           touched={touched}
-                          validate={this.validateTodo}
                         />
                         <IconButton
                           style={styles.todoRemoveBtn}
@@ -64,7 +72,8 @@ export default class FormWithDynamicInput extends React.Component {
                     />
                   </div>
                 )}
-              />
+              </FieldArray>
+
               <Button
                 unelevated
                 type="submit"
@@ -73,25 +82,17 @@ export default class FormWithDynamicInput extends React.Component {
               />
             </Form>
           )}
-        />
+        </Formik>
       </div>
     );
   }
-
-  validateTodo = value => {
-    let error;
-    if (value == null || _.size(value) === 0) {
-      error = "Required";
-    }
-    return error;
-  };
 
   getInitialValues = todos =>
     _.reduce(
       todos,
       (acc, todo, index) => ({
         ...acc,
-        [\`\${this.todoPrefix} \${index}\`]: todo.item
+        [\`\${ this.todoPrefix } \${ index }\`]: todo.item
       }),
       {}
     );
@@ -117,13 +118,11 @@ const GroupItemTextField = ({
   errors,
   touched,
   label,
-  index,
-  validate
+  index
 }) => (
   <Field
     type={type}
     name={name}
-    validate={validate}
     render={({ field }) => (
       <TextField
         {...field}
