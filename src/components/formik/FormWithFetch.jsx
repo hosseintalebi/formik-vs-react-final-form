@@ -36,7 +36,7 @@ const regionsOptions$ = createSelector(
   }
 );
 
-const LoginSchema = Yup.object().shape({
+const SignUpSchema = Yup.object().shape({
   firstName: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
@@ -65,7 +65,7 @@ const SignUpForm = () => {
     <div>
       <Formik
         initialValues={getInitialValues()}
-        validationSchema={LoginSchema}
+        validationSchema={SignUpSchema}
         onSubmit={onSubmit}
       >
         {({ errors, touched, isSubmitting, handleChange }) => (

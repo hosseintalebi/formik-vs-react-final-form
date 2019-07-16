@@ -60,11 +60,11 @@ const validate = values => {
   return errors;
 };
 
-const onSubmit = (values, { setSubmitting }) => {
-  setTimeout(() => {
-    alert(JSON.stringify(values, null, 2));
-    setSubmitting(false);
-  }, 400);
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+const onSubmit = async values => {
+  await sleep(400);
+  window.alert(JSON.stringify(values, 0, 2));
 };
 
 export default LoginForm;

@@ -14,6 +14,7 @@ import WizardFormik from "./formik/Wizard";
 
 // React Final Forms
 import SimpleFormRFF from "./react-final-form/SimpleForm";
+import FormWithFetchRFF from "./react-final-form/FormWithFetch";
 
 // Sourc String Formik
 import simpleFormCodeFormik from "./syntax-highlight/formik/simpleForm";
@@ -24,6 +25,7 @@ import wizardFormik from "./syntax-highlight/formik/wizard";
 
 // Sourc String React Final Form
 import simpleFormCodeRFF from "./syntax-highlight/react-final-form/simpleForm";
+import formWithFetchRFF from "./syntax-highlight/react-final-form/formWithFetch";
 
 // Styles
 const styles = {
@@ -124,7 +126,7 @@ const Forms = () => {
         rffCode={
           <SyntaxHighlight
             codeString={simpleFormCodeRFF}
-            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/SimpleForm.jsx"
+            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/react-final-form/SimpleForm.jsx"
           />
         }
       />
@@ -143,9 +145,16 @@ const Forms = () => {
         title="Form with network request"
         subtitle="Fetch data based on the value of certain input."
         formikForm={<FormWithFetchFormik />}
+        rffForm={<FormWithFetchRFF />}
         formikCode={
           <SyntaxHighlight
             codeString={formWithFetchFormik}
+            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/FormWithFetch.jsx"
+          />
+        }
+        rffCode={
+          <SyntaxHighlight
+            codeString={formWithFetchRFF}
             codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/FormWithFetch.jsx"
           />
         }
