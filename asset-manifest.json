@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/formik-vs-react-final-form/static/css/main.e3916421.chunk.css",
-    "main.js": "/formik-vs-react-final-form/static/js/main.e682c7b0.chunk.js",
-    "main.js.map": "/formik-vs-react-final-form/static/js/main.e682c7b0.chunk.js.map",
+    "main.js": "/formik-vs-react-final-form/static/js/main.6857d55b.chunk.js",
+    "main.js.map": "/formik-vs-react-final-form/static/js/main.6857d55b.chunk.js.map",
     "runtime~main.js": "/formik-vs-react-final-form/static/js/runtime~main.302862e4.js",
     "runtime~main.js.map": "/formik-vs-react-final-form/static/js/runtime~main.302862e4.js.map",
-    "static/css/2.e95a0437.chunk.css": "/formik-vs-react-final-form/static/css/2.e95a0437.chunk.css",
-    "static/js/2.a4611374.chunk.js": "/formik-vs-react-final-form/static/js/2.a4611374.chunk.js",
-    "static/js/2.a4611374.chunk.js.map": "/formik-vs-react-final-form/static/js/2.a4611374.chunk.js.map",
+    "static/css/2.ade03c73.chunk.css": "/formik-vs-react-final-form/static/css/2.ade03c73.chunk.css",
+    "static/js/2.4bd18c2e.chunk.js": "/formik-vs-react-final-form/static/js/2.4bd18c2e.chunk.js",
+    "static/js/2.4bd18c2e.chunk.js.map": "/formik-vs-react-final-form/static/js/2.4bd18c2e.chunk.js.map",
     "index.html": "/formik-vs-react-final-form/index.html",
-    "precache-manifest.3a7645df2df7526a5ea3ca82bca712b0.js": "/formik-vs-react-final-form/precache-manifest.3a7645df2df7526a5ea3ca82bca712b0.js",
+    "precache-manifest.5ec8b29d87ba71829f90fe0004c37b5e.js": "/formik-vs-react-final-form/precache-manifest.5ec8b29d87ba71829f90fe0004c37b5e.js",
     "service-worker.js": "/formik-vs-react-final-form/service-worker.js",
-    "static/css/2.e95a0437.chunk.css.map": "/formik-vs-react-final-form/static/css/2.e95a0437.chunk.css.map",
+    "static/css/2.ade03c73.chunk.css.map": "/formik-vs-react-final-form/static/css/2.ade03c73.chunk.css.map",
     "static/css/main.e3916421.chunk.css.map": "/formik-vs-react-final-form/static/css/main.e3916421.chunk.css.map",
     "static/media/github-logo.b18fec7e.svg": "/formik-vs-react-final-form/static/media/github-logo.b18fec7e.svg"
   }
