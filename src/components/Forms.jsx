@@ -17,6 +17,7 @@ import SimpleFormRFF from "./react-final-form/SimpleForm";
 import FormWithFetchRFF from "./react-final-form/FormWithFetch";
 import FormWithDynamicInputRFF from "./react-final-form/FormWithDynamicInput";
 import WizardRFF from "./react-final-form/WizardForm";
+import FormWithErrorFocusRFF from "./react-final-form/FormWithErrorFocus";
 
 // Sourc String Formik
 import simpleFormCodeFormik from "./syntax-highlight/formik/simpleForm";
@@ -30,6 +31,7 @@ import simpleFormCodeRFF from "./syntax-highlight/react-final-form/simpleForm";
 import formWithFetchRFF from "./syntax-highlight/react-final-form/formWithFetch";
 import formWithDynamicInputRFF from "./syntax-highlight/react-final-form/formWithDynamicInput";
 import wizardRFF from "./syntax-highlight/react-final-form/wizardForm";
+import formWithErrorFocusRFF from "./syntax-highlight/react-final-form/formWithErrorFocus";
 
 // Styles
 const styles = {
@@ -106,7 +108,7 @@ const styles = {
   },
   tabBar: nTabs => ({
     margin: "0 0 -8px auto",
-    width: nTabs === 1 ? 160 : 320
+    width: nTabs === 1 ? 200 : 320
   })
 };
 
@@ -147,7 +149,7 @@ const Forms = () => {
       />
       <FormRender
         title="Form with network request"
-        subtitle="Fetch data based on the value of certain input."
+        subtitle="When the value of country changes, we fetch the states/provinces of that country and populate the select box."
         formikForm={<FormWithFetchFormik />}
         rffForm={<FormWithFetchRFF />}
         formikCode={
@@ -177,6 +179,17 @@ const Forms = () => {
         rffCode={
           <SyntaxHighlight
             codeString={formWithDynamicInputRFF}
+            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/FormWithFetch.jsx"
+          />
+        }
+      />
+      <FormRender
+        title="Focus on error form"
+        subtitle="If you press submit without filling out the form, it will focus on the first error."
+        rffForm={<FormWithErrorFocusRFF />}
+        rffCode={
+          <SyntaxHighlight
+            codeString={formWithErrorFocusRFF}
             codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/FormWithFetch.jsx"
           />
         }

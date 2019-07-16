@@ -5,6 +5,7 @@
   "dependencies": {
     "final-form": "^4.18.1",
     "final-form-arrays": "^3.0.0",
+    "final-form-focus": "^1.1.2",
     "formik": "^1.5.7",
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
