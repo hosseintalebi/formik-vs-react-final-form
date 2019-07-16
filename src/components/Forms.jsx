@@ -10,12 +10,13 @@ import SimpleFormFormik from "./formik/SimpleForm";
 import FormWithYupFormik from "./formik/FormWithYup";
 import FormWithFetchFormik from "./formik/FormWithFetch";
 import FormWithDynamicInputFormik from "./formik/FormWithDynamicInput";
-import WizardFormik from "./formik/Wizard";
+import WizardFormik from "./formik/WizardForm";
 
 // React Final Forms
 import SimpleFormRFF from "./react-final-form/SimpleForm";
 import FormWithFetchRFF from "./react-final-form/FormWithFetch";
 import FormWithDynamicInputRFF from "./react-final-form/FormWithDynamicInput";
+import WizardRFF from "./react-final-form/WizardForm";
 
 // Sourc String Formik
 import simpleFormCodeFormik from "./syntax-highlight/formik/simpleForm";
@@ -28,6 +29,7 @@ import wizardFormik from "./syntax-highlight/formik/wizard";
 import simpleFormCodeRFF from "./syntax-highlight/react-final-form/simpleForm";
 import formWithFetchRFF from "./syntax-highlight/react-final-form/formWithFetch";
 import formWithDynamicInputRFF from "./syntax-highlight/react-final-form/formWithDynamicInput";
+import wizardRFF from "./syntax-highlight/react-final-form/wizardForm";
 
 // Styles
 const styles = {
@@ -183,9 +185,16 @@ const Forms = () => {
         title="Form wizard"
         subtitle="Multi step form with validation."
         formikForm={<WizardFormik />}
+        rffForm={<WizardRFF />}
         formikCode={
           <SyntaxHighlight
             codeString={wizardFormik}
+            codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/Wizard.jsx"
+          />
+        }
+        rffCode={
+          <SyntaxHighlight
+            codeString={wizardRFF}
             codeUrl="https://github.com/hosseintalebi/formik-vs-react-final-form/blob/master/src/components/formik/Wizard.jsx"
           />
         }

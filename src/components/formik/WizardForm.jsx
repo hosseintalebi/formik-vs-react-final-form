@@ -1,4 +1,4 @@
-const codeString = `import React from "react";
+import React from "react";
 import { Field, ErrorMessage } from "formik";
 import Wizard from "./Wizard";
 
@@ -126,5 +126,3 @@ const FormikRMWCTextField = ({ name, type, label, validate }) => (
     render={({ field }) => <TextField {...field} type={type} label={label} />}
   />
 );
-`;
-export default codeString;
