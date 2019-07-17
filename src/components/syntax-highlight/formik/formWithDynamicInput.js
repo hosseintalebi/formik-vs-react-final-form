@@ -49,7 +49,7 @@ export default class FormWithDynamicInput extends React.Component {
                       <div style={styles.todoItem} key={index}>
                         <GroupItemTextField
                           type="text"
-                          name={\todos.\${ index }.item\`}
+                          name={\`todos.\${ index }.item\`}
                           index={index}
                           label="Todo"
                           groupName="todos"

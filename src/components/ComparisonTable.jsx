@@ -42,7 +42,8 @@ const comparisionData = {
     schemaValidation: "✓",
     errorFocus: "✗",
     hooks: "✗",
-    wizard: "✓"
+    wizard: "✓",
+    rerenderOptimization: "✗"
   },
   finalForm: {
     name: "React Final Form",
@@ -54,7 +55,8 @@ const comparisionData = {
     schemaValidation: "✗",
     errorFocus: "✓",
     hooks: "✓",
-    wizard: "✓"
+    wizard: "✓",
+    rerenderOptimization: "✓"
   }
 };
 const Table = () => {
@@ -102,6 +104,11 @@ const Table = () => {
           <td style={styles.td}>{finalForm.hooks}</td>
         </tr>
         <tr style={styles.trh}>
+          <th style={styles.th}>Rerender Optimization</th>
+          <td style={styles.td}>{formik.rerenderOptimization}</td>
+          <td style={styles.td}>{finalForm.rerenderOptimization}</td>
+        </tr>
+        <tr style={styles.tr}>
           <th style={styles.th}>Wizard</th>
           <td style={styles.td}>{formik.wizard}</td>
           <td style={styles.td}>{finalForm.wizard}</td>

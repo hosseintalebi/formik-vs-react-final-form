@@ -5,6 +5,11 @@ import Wizard from "./Wizard";
 // RMWC Components
 import { TextField, Select } from "../UI-kit";
 
+// Styles
+const styles = {
+  select: { minWidth: 233, maxWidth: 233 }
+};
+
 const initialValues = {
   firstName: "",
   lastName: "",
@@ -77,7 +82,7 @@ const WizatForm = () => (
                 ]}
                 error={meta.error}
                 touched={meta.touched}
-                style={{ minWidth: 233, maxWidth: 233 }}
+                style={styles.select}
               />
             );
           }}

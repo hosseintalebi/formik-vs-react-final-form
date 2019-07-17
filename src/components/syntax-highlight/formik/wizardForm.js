@@ -11,7 +11,8 @@ const styles = {
     marginTop: 5,
     fontSize: "0.8em",
     color: "red"
-  }
+  },
+  select: { minWidth: 233, maxWidth: 233 }
 };
 
 const initialValues = {
@@ -88,7 +89,7 @@ const WizardForm = () => (
                     { label: "💚 Green", value: "green" },
                     { label: "💙 Blue", value: "blue" }
                   ]}
-                  style={{ minWidth: 233, maxWidth: 233 }}
+                  style={styles.select}
                 />
               );
             }}

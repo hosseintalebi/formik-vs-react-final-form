@@ -13,6 +13,9 @@ import userRegions from "../../hooks/userRegions";
 
 // Styles
 import commonStyles from "../styles";
+const styles = {
+  select: { minWidth: 233, maxWidth: 233 }
+};
 
 // Local Selectors
 const countiesOptions$ = createSelector(
@@ -110,7 +113,7 @@ const SignUpForm = () => {
                   error={meta.error}
                   touched={meta.touched}
                   options={countiesOptions$(countries)}
-                  style={{ minWidth: 233, maxWidth: 233 }}
+                  style={styles.select}
                   onChange={e => {
                     form.change("country", e.target.value);
                     setCountry(e.target.value);
@@ -127,7 +130,7 @@ const SignUpForm = () => {
                   error={meta.error}
                   touched={meta.touched}
                   options={regionsOptions$(regions)}
-                  style={{ minWidth: 233, maxWidth: 233 }}
+                  style={styles.select}
                 />
               )}
             </Field>
