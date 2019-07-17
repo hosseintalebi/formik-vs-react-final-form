@@ -35,6 +35,15 @@ const regionsOptions$ = createSelector(
   }
 );
 
+const initialValues = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  country: "",
+  region: ""
+};
+
 const SignUpForm = () => {
   const [country, setCountry] = useState(null);
   const [countries, loadingCountries] = useCountries();
@@ -43,7 +52,7 @@ const SignUpForm = () => {
   return (
     <div>
       <Form
-        initialValues={getInitialValues()}
+        initialValues={initialValues}
         validate={validate}
         onSubmit={onSubmit}
       >
@@ -135,14 +144,12 @@ const SignUpForm = () => {
   );
 };
 
-const getInitialValues = () => ({
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-  country: "",
-  region: ""
-});
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+const onSubmit = async values => {
+  await sleep(400);
+  window.alert(JSON.stringify(values, 0, 2));
+};
 
 const validate = values => {
   let errors = {};
@@ -184,13 +191,6 @@ const validate = values => {
     errors.region = "Required";
   }
   return errors;
-};
-
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-const onSubmit = async values => {
-  await sleep(400);
-  window.alert(JSON.stringify(values, 0, 2));
 };
 
 export default SignUpForm;

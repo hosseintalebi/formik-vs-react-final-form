@@ -24,14 +24,14 @@ import simpleFormCodeFormik from "./syntax-highlight/formik/simpleForm";
 import formWithYupFormik from "./syntax-highlight/formik/formWithYup";
 import formWithFetchFormik from "./syntax-highlight/formik/formWithFetch";
 import formWithDynamicInputFormik from "./syntax-highlight/formik/formWithDynamicInput";
-import wizardFormik from "./syntax-highlight/formik/wizard";
+import wizardFormik from "./syntax-highlight/formik/wizardForm";
 
 // Sourc String React Final Form
 import simpleFormCodeRFF from "./syntax-highlight/react-final-form/simpleForm";
 import formWithFetchRFF from "./syntax-highlight/react-final-form/formWithFetch";
 import formWithDynamicInputRFF from "./syntax-highlight/react-final-form/formWithDynamicInput";
-import wizardRFF from "./syntax-highlight/react-final-form/wizardForm";
 import formWithErrorFocusRFF from "./syntax-highlight/react-final-form/formWithErrorFocus";
+import wizardRFF from "./syntax-highlight/react-final-form/wizardForm";
 
 // Styles
 const styles = {

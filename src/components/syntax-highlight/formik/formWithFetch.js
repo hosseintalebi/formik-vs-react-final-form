@@ -2,8 +2,8 @@ const codeString = `import React, { useState } from "react";
 
 import _ from "lodash";
 import { Form, Formik, Field } from "formik";
-import * as Yup from "yup";
 import { createSelector } from "reselect";
+import * as Yup from "yup";
 
 // RMWC Components
 import { Button, TextField, Select } from "../UI-kit";
@@ -36,7 +36,16 @@ const regionsOptions$ = createSelector(
   }
 );
 
-const LoginSchema = Yup.object().shape({
+const initialValues = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  country: "",
+  region: ""
+};
+
+const SignUpSchema = Yup.object().shape({
   firstName: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
@@ -64,8 +73,8 @@ const SignUpForm = () => {
   return (
     <div>
       <Formik
-        initialValues={getInitialValues()}
-        validationSchema={LoginSchema}
+        initialValues={initialValues}
+        validationSchema={SignUpSchema}
         onSubmit={onSubmit}
       >
         {({ errors, touched, isSubmitting, handleChange }) => (
@@ -146,6 +155,13 @@ const SignUpForm = () => {
   );
 };
 
+const onSubmit = (values, { setSubmitting }) => {
+  setTimeout(() => {
+    alert(JSON.stringify(values, null, 2));
+    setSubmitting(false);
+  }, 400);
+};
+
 const FormikRMWCTextField = ({ name, type, errors, touched, label }) => (
   <Field
     type={type}
@@ -161,22 +177,6 @@ const FormikRMWCTextField = ({ name, type, errors, touched, label }) => (
     )}
   />
 );
-
-const getInitialValues = () => ({
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-  country: "",
-  region: ""
-});
-
-const onSubmit = (values, { setSubmitting }) => {
-  setTimeout(() => {
-    alert(JSON.stringify(values, null, 2));
-    setSubmitting(false);
-  }, 400);
-};
 
 export default SignUpForm;
 `;

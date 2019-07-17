@@ -20,7 +20,31 @@ const LoginForm = () => (
     {({ handleSubmit, submitting }) => (
       <form onSubmit={handleSubmit} style={commonStyles.form}>
         <Field
-          name="email"
+          name="firstNameFocus"
+          render={({ input, meta }) => (
+            <TextField
+              {...input}
+              type="text"
+              error={meta.error}
+              touched={meta.touched}
+              label={"First Name"}
+            />
+          )}
+        />
+        <Field
+          name="lastNameFocus"
+          render={({ input, meta }) => (
+            <TextField
+              {...input}
+              type="text"
+              error={meta.error}
+              touched={meta.touched}
+              label={"Last Name"}
+            />
+          )}
+        />
+        <Field
+          name="emailFocus"
           render={({ input, meta }) => (
             <TextField
               {...input}
@@ -32,7 +56,7 @@ const LoginForm = () => (
           )}
         />
         <Field
-          name="password"
+          name="passwordFocus"
           render={({ input, meta }) => (
             <TextField
               {...input}
@@ -49,17 +73,30 @@ const LoginForm = () => (
   </Form>
 );
 
-const getInitialValues = () => ({ email: "", password: "" });
+const getInitialValues = () => ({
+  firstNameFocus: "",
+  lastNameFocus: "",
+  emailFocus: "",
+  passwordFocus: ""
+});
 
 const validate = values => {
   let errors = {};
-  if (!values.email) {
-    errors.email = "Email is required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = "Invalid email address";
+  if (!values.emailFocus) {
+    errors.emailFocus = "Email is required";
+  } else if (
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.emailFocus)
+  ) {
+    errors.emailFocus = "Invalid email address";
   }
-  if (!values.password) {
-    errors.password = "Password is required";
+  if (!values.passwordFocus) {
+    errors.passwordFocus = "Password is required";
+  }
+  if (!values.firstNameFocus) {
+    errors.firstNameFocus = "First name is required";
+  }
+  if (!values.lastNameFocus) {
+    errors.lastNameFocus = "Last name is required";
   }
   return errors;
 };

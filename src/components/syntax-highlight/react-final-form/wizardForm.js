@@ -5,26 +5,16 @@ import Wizard from "./Wizard";
 // RMWC Components
 import { TextField, Select } from "../UI-kit";
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-const onSubmit = async values => {
-  await sleep(300);
-  window.alert(JSON.stringify(values, 0, 2));
+const initialValues = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  favoriteColor: ""
 };
-
-const required = value => (value ? undefined : "Required");
 
 const WizatForm = () => (
   <div className="App">
-    <Wizard
-      initialValues={{
-        firstName: "",
-        lastName: "",
-        email: "",
-        favoriteColor: ""
-      }}
-      onSubmit={onSubmit}
-    >
+    <Wizard initialValues={initialValues} onSubmit={onSubmit}>
       <Wizard.Page>
         <div>
           <Field name="firstName" validate={required}>
@@ -96,6 +86,15 @@ const WizatForm = () => (
     </Wizard>
   </div>
 );
+
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+const onSubmit = async values => {
+  await sleep(300);
+  window.alert(JSON.stringify(values, 0, 2));
+};
+
+const required = value => (value ? undefined : "Required");
 
 export default WizatForm;
 `;

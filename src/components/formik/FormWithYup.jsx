@@ -8,6 +8,11 @@ import { Button, TextField } from "../UI-kit";
 // Styles
 import commonStyles from "../styles";
 
+const initialValues = {
+  email: "",
+  password: ""
+};
+
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email")
@@ -22,7 +27,7 @@ const LoginFormYup = () => {
   return (
     <div>
       <Formik
-        initialValues={getInitialValues()}
+        initialValues={initialValues}
         validationSchema={LoginSchema}
         onSubmit={onSubmit}
       >
@@ -67,11 +72,6 @@ const LoginFormYup = () => {
     </div>
   );
 };
-
-const getInitialValues = () => ({
-  email: "",
-  password: ""
-});
 
 const onSubmit = (values, { setSubmitting }) => {
   setTimeout(() => {

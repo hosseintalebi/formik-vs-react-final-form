@@ -14,27 +14,16 @@ const styles = {
   }
 };
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-const onSubmit = (values, actions) => {
-  sleep(300).then(() => {
-    window.alert(JSON.stringify(values, null, 2));
-    actions.setSubmitting(false);
-  });
+const initialValues = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  favoriteColor: ""
 };
-
-const required = value => (value ? undefined : "Required");
 
 const WizardForm = () => (
   <div className="App">
-    <Wizard
-      initialValues={{
-        firstName: "",
-        lastName: "",
-        email: "",
-        favoriteColor: ""
-      }}
-      onSubmit={onSubmit}
-    >
+    <Wizard initialValues={initialValues} onSubmit={onSubmit}>
       <Wizard.Page>
         <div>
           <FormikRMWCTextField
@@ -116,7 +105,15 @@ const WizardForm = () => (
   </div>
 );
 
-export default WizardForm;
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const onSubmit = (values, actions) => {
+  sleep(300).then(() => {
+    window.alert(JSON.stringify(values, null, 2));
+    actions.setSubmitting(false);
+  });
+};
+
+const required = value => (value ? undefined : "Required");
 
 const FormikRMWCTextField = ({ name, type, label, validate }) => (
   <Field
@@ -126,5 +123,6 @@ const FormikRMWCTextField = ({ name, type, label, validate }) => (
     render={({ field }) => <TextField {...field} type={type} label={label} />}
   />
 );
+export default WizardForm;
 `;
 export default codeString;

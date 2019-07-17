@@ -1,6 +1,4 @@
 const codeString = `import React from "react";
-import * as Yup from "yup";
-import _ from "lodash";
 import { Form, Field } from "react-final-form";
 import arrayMutators from "final-form-arrays";
 import { FieldArray } from "react-final-form-arrays";
@@ -11,7 +9,6 @@ import { IconButton } from "rmwc";
 
 // Styles
 import commonStyles from "../styles";
-import { access } from "fs";
 const styles = {
   todoItem: {
     display: "flex"
@@ -25,8 +22,6 @@ const styles = {
 const initialValues = {
   todos: [{ item: "shopping" }, { item: "" }]
 };
-
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 export default class FormWithDynamicInput extends React.Component {
   render() {
@@ -101,8 +96,10 @@ export default class FormWithDynamicInput extends React.Component {
     }
   };
 
+  sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
   onSubmit = async values => {
-    await sleep(400);
+    await this.sleep(400);
     window.alert(JSON.stringify(values, 0, 2));
   };
 }

@@ -7,12 +7,10 @@ import { Button, TextField } from "../UI-kit";
 // Styles
 import commonStyles from "../styles";
 
+const initialValues = { email: "", password: "" };
+
 const LoginForm = () => (
-  <Formik
-    initialValues={getInitialValues()}
-    validate={validate}
-    onSubmit={onSubmit}
-  >
+  <Formik initialValues={initialValues} validate={validate} onSubmit={onSubmit}>
     {({
       values,
       errors,
@@ -53,8 +51,6 @@ const LoginForm = () => (
     )}
   </Formik>
 );
-
-const getInitialValues = () => ({ email: "", password: "" });
 
 const validate = values => {
   let errors = {};

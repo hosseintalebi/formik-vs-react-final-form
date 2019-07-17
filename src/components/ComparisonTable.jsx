@@ -42,7 +42,6 @@ const comparisionData = {
     schemaValidation: "✓",
     errorFocus: "✗",
     hooks: "✗",
-    popularity: "428,133",
     wizard: "✓"
   },
   finalForm: {
@@ -55,7 +54,6 @@ const comparisionData = {
     schemaValidation: "✗",
     errorFocus: "✓",
     hooks: "✓",
-    popularity: "83,674",
     wizard: "✓"
   }
 };
@@ -107,21 +105,6 @@ const Table = () => {
           <th style={styles.th}>Wizard</th>
           <td style={styles.td}>{formik.wizard}</td>
           <td style={styles.td}>{finalForm.wizard}</td>
-        </tr>
-        <tr style={styles.tr}>
-          <th style={styles.th}>Popularity</th>
-          <td style={styles.td}>
-            <div>
-              <div>{formik.popularity}</div>
-              <div style={styles.secondaryInfo}>Weekly Download</div>
-            </div>
-          </td>
-          <td style={styles.td}>
-            <div>
-              <div>{finalForm.popularity}</div>
-              <div style={styles.secondaryInfo}>Weekly Download</div>
-            </div>
-          </td>
         </tr>
       </tbody>
     </table>
