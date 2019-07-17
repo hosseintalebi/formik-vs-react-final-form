@@ -7,12 +7,10 @@ import { Button, TextField } from "../UI-kit";
 // Styles
 import commonStyles from "../styles";
 
+const initialValues = { email: "", password: "" };
+
 const LoginForm = () => (
-  <Form
-    initialValues={getInitialValues()}
-    validate={validate}
-    onSubmit={onSubmit}
-  >
+  <Form initialValues={initialValues} validate={validate} onSubmit={onSubmit}>
     {({ handleSubmit, submitting }) => (
       <form onSubmit={handleSubmit} style={commonStyles.form}>
         <Field
@@ -44,8 +42,6 @@ const LoginForm = () => (
     )}
   </Form>
 );
-
-const getInitialValues = () => ({ email: "", password: "" });
 
 const validate = values => {
   let errors = {};
