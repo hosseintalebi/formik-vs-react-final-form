@@ -98,7 +98,7 @@ const styles = {
     justifyContent: "flex-end",
     minHeigh: 250,
     overflow: "hidden",
-    margin: "0px 10px"
+    marginLeft: 10
   },
   code: {
     width: "100%",
@@ -113,13 +113,18 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: "100%",
+    width: "95%",
     margin: "5px 20px"
   },
   tabBar: nTabs => ({
     margin: "0 0 -8px auto",
     width: nTabs === 1 ? 200 : 320
-  })
+  }),
+  linkIcon: {
+    color: "rgba(45,45,45,0.3)",
+    marginRight: 5,
+    transform: "rotate(-135deg)"
+  }
 };
 
 const Forms = () => {
@@ -205,7 +210,7 @@ const Forms = () => {
         }
       />
       <FormRender
-        title="Form wizard"
+        title="Wizard Form"
         subtitle="Multi step form with validation."
         formikForm={<WizardFormik />}
         rffForm={<WizardRFF />}
@@ -270,8 +275,8 @@ const FormRender = ({
 
 const getTabs = ({ hasFormik, hasRFF }) => {
   const tabs = [];
-  hasFormik && tabs.push(<Tab>Formik</Tab>);
-  hasRFF && tabs.push(<Tab>React Final Form</Tab>);
+  hasFormik && tabs.push(<Tab key="formik">Formik</Tab>);
+  hasRFF && tabs.push(<Tab key="rff">React Final Form</Tab>);
   return tabs;
 };
 
