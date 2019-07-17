@@ -39,7 +39,7 @@ const styles = {
     margin: "20px 10px 50px"
   },
   titleWapper: {
-    maxWidth: 1000,
+    maxWidth: 1100,
     width: "100%",
     margin: "0 auto",
     display: "flex",
@@ -62,24 +62,29 @@ const styles = {
     textAlign: "left"
   },
   formAndCodeWrapper: {
+    maxWidth: 1100,
+    width: "100%",
     background: "#fafafa",
     display: "flex",
-    margin: "30px 0 60px",
+    margin: "20px 0 60px",
     position: "relative",
     flexDirection: "column"
   },
   formAndCode: {
     display: "flex",
-    flexWrap: "nowrap",
+    flexWrap: "wrap",
     width: "100%"
   },
   formWrapper: {
+    flexBasis: "26%",
+    flexGrow: 1,
     justifyContent: "flex-end",
     minHeigh: 250,
     overflow: "hidden",
     margin: 20
   },
   form: {
+    width: "100%",
     flex: "0 1 450px",
     maxWidth: "450px",
     display: "flex",
@@ -88,12 +93,15 @@ const styles = {
     justifyContent: "center"
   },
   codeWrapper: {
+    flexGrow: 2,
+    flexBasis: "65%",
     justifyContent: "flex-end",
     minHeigh: 250,
     overflow: "hidden",
-    margin: "0px 10px 0px 50px"
+    margin: "0px 10px"
   },
   code: {
+    width: "100%",
     flex: "0 1 100%",
     maxWidth: "100%",
     display: "flex",
@@ -104,7 +112,9 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    width: "100%",
+    margin: "5px 20px"
   },
   tabBar: nTabs => ({
     margin: "0 0 -8px auto",

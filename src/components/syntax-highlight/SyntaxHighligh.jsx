@@ -5,6 +5,9 @@ import { Icon } from "rmwc";
 import { ReactComponent as Logo } from "../../github-logo.svg";
 
 const styles = {
+  wrapper: {
+    width: "100%"
+  },
   link: {
     color: "#9B64DE",
     textDecoration: "none",
@@ -17,7 +20,7 @@ const styles = {
 };
 const SyntaxHighlight = ({ codeString, codeUrl }) => {
   return (
-    <div>
+    <div style={styles.wrapper}>
       <SyntaxHighlighter
         language="javascript"
         style={prism}
