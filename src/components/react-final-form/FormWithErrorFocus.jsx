@@ -10,9 +10,16 @@ import commonStyles from "../styles";
 
 const focusOnError = createDecorator();
 
+const initialValues = {
+  firstNameFocus: "",
+  lastNameFocus: "",
+  emailFocus: "",
+  passwordFocus: ""
+};
+
 const LoginForm = () => (
   <Form
-    initialValues={getInitialValues()}
+    initialValues={initialValues}
     validate={validate}
     onSubmit={onSubmit}
     decorators={[focusOnError]}
@@ -72,13 +79,6 @@ const LoginForm = () => (
     )}
   </Form>
 );
-
-const getInitialValues = () => ({
-  firstNameFocus: "",
-  lastNameFocus: "",
-  emailFocus: "",
-  passwordFocus: ""
-});
 
 const validate = values => {
   let errors = {};

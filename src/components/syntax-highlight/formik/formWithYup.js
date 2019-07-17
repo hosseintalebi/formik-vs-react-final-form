@@ -8,10 +8,7 @@ import { Button, TextField } from "../UI-kit";
 // Styles
 import commonStyles from "../styles";
 
-const initialValues = {
-  email: "",
-  password: ""
-};
+const initialValues = { email: "", password: "" };
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
