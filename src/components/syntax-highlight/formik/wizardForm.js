@@ -27,11 +27,13 @@ const WizardForm = () => (
     <Wizard initialValues={initialValues} onSubmit={onSubmit}>
       <Wizard.Page>
         <div>
-          <FormikRMWCTextField
-            type="text"
-            name="firstName"
-            label="First Name"
+          <Field
+            type={"text"}
+            name={"firstName"}
             validate={required}
+            render={({ field }) => (
+              <TextField {...field} type={"text"} label={"First Name"} />
+            )}
           />
           <ErrorMessage
             style={styles.error}
@@ -41,11 +43,13 @@ const WizardForm = () => (
           />
         </div>
         <div>
-          <FormikRMWCTextField
-            type="text"
-            name="lastName"
-            label="Last Name"
+          <Field
+            type={"text"}
+            name={"lastName"}
             validate={required}
+            render={({ field }) => (
+              <TextField {...field} type={"text"} label={"Last Name"} />
+            )}
           />
           <ErrorMessage
             style={styles.error}
@@ -68,7 +72,14 @@ const WizardForm = () => (
         }}
       >
         <div>
-          <FormikRMWCTextField type="email" name="email" label="Email" />
+          <Field
+            type={"email"}
+            name={"email"}
+            validate={required}
+            render={({ field }) => (
+              <TextField {...field} type={"email"} label={"Email"} />
+            )}
+          />
           <ErrorMessage
             style={styles.error}
             name="email"
@@ -116,14 +127,6 @@ const onSubmit = (values, actions) => {
 
 const required = value => (value ? undefined : "Required");
 
-const FormikRMWCTextField = ({ name, type, label, validate }) => (
-  <Field
-    type={type}
-    name={name}
-    validate={validate}
-    render={({ field }) => <TextField {...field} type={type} label={label} />}
-  />
-);
 export default WizardForm;
 `;
 export default codeString;

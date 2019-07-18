@@ -88,35 +88,55 @@ const SignUpForm = () => {
         validationSchema={SignUpSchema}
         onSubmit={onSubmit}
       >
-        {({ errors, touched, isSubmitting, handleChange }) => (
-          <Form style={commonStyles.form}>
-            <FormikRMWCTextField
+        {({
+          errors,
+          touched,
+          isSubmitting,
+          handleBlur,
+          values,
+          handleChange,
+          handleSubmit
+        }) => (
+          <Form onSubmit={handleSubmit} style={commonStyles.form}>
+            <TextField
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values["firstName"]}
               type="text"
               name="firstName"
+              error={errors["firstName"]}
+              touched={touched["firstName"]}
               label="First Name"
-              errors={errors}
-              touched={touched}
             />
-            <FormikRMWCTextField
+            <TextField
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values["lastName"]}
               type="text"
               name="lastName"
+              error={errors["lastName"]}
+              touched={touched["lastName"]}
               label="Last Name"
-              errors={errors}
-              touched={touched}
             />
-            <FormikRMWCTextField
+            <TextField
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values["email"]}
               type="email"
               name="email"
               label="Email"
-              errors={errors}
-              touched={touched}
+              error={errors["email"]}
+              touched={touched["email"]}
             />
-            <FormikRMWCTextField
+            <TextField
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values["password"]}
               type="password"
               name="password"
               label="Password"
-              errors={errors}
-              touched={touched}
+              error={errors["Password"]}
+              touched={touched["Password"]}
             />
             <Field
               name="country"
@@ -184,22 +204,6 @@ const onSubmit = (values, { setSubmitting }) => {
     setSubmitting(false);
   }, 400);
 };
-
-const FormikRMWCTextField = ({ name, type, errors, touched, label }) => (
-  <Field
-    type={type}
-    name={name}
-    render={({ field }) => (
-      <TextField
-        {...field}
-        type={type}
-        error={errors[name]}
-        touched={touched[name]}
-        label={label}
-      />
-    )}
-  />
-);
 
 export default SignUpForm;
 `;
