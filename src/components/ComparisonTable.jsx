@@ -33,7 +33,7 @@ const styles = {
 };
 const comparisionData = {
   formik: {
-    name: "Formik",
+    name: "formik@1.5.8",
     size: {
       minifiedGZipped: "12.6 kB gzipped"
     },
@@ -46,9 +46,9 @@ const comparisionData = {
     rerenderOptimization: "✗"
   },
   finalForm: {
-    name: "React Final Form",
+    name: "react-final-form@6.3.0",
     size: {
-      minifiedGZipped: "7.5 kB gzipped"
+      minifiedGZipped: `8.1 kB gzipped (including final-form@4.18.2)`
     },
     typescript: "✓",
     asyncValidation: "✓",
