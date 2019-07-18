@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
 import _ from "lodash";
+import Spinner from "react-spinkit";
 import { Form, Formik, Field } from "formik";
 import { createSelector } from "reselect";
 import * as Yup from "yup";
@@ -10,12 +10,20 @@ import { Button, TextField, Select } from "../UI-kit";
 
 // Hooks
 import useCountries from "../../hooks/useCountries";
-import userRegions from "../../hooks/userRegions";
+import useRegions from "../../hooks/useRegions";
 
 // Styles
 import commonStyles from "../styles";
 const styles = {
-  select: { minWidth: 233, maxWidth: 233 }
+  select: { minWidth: 233, maxWidth: 233 },
+  selectWrapper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  spinner: {
+    position: "absolute"
+  }
 };
 
 // Local Selectors
@@ -71,7 +79,7 @@ const SignUpSchema = Yup.object().shape({
 const SignUpForm = () => {
   const [country, setCountry] = useState(null);
   const [countries, loadingCountries] = useCountries();
-  const [regions, loadingRegions] = userRegions(country);
+  const [regions, loadingRegions] = useRegions(country);
 
   return (
     <div>
@@ -114,19 +122,25 @@ const SignUpForm = () => {
               name="country"
               render={({ field, form }) => {
                 return (
-                  <Select
-                    {...field}
-                    label="Country"
-                    error={errors["country"]}
-                    touched={touched["country"]}
-                    options={countiesOptions$(countries)}
-                    style={styles.select}
-                    onChange={e => {
-                      setCountry(e.target.value);
-                      handleChange(e);
-                      form.setFieldValue("region", "");
-                    }}
-                  />
+                  <div style={styles.selectWrapper}>
+                    <Select
+                      {...field}
+                      label="Country"
+                      disabled={loadingCountries}
+                      error={errors["country"]}
+                      touched={touched["country"]}
+                      options={countiesOptions$(countries)}
+                      style={styles.select}
+                      onChange={e => {
+                        setCountry(e.target.value);
+                        handleChange(e);
+                        form.setFieldValue("region", "");
+                      }}
+                    />
+                    {loadingCountries && (
+                      <Spinner style={styles.spinner} name="double-bounce" />
+                    )}
+                  </div>
                 );
               }}
             />
@@ -134,14 +148,20 @@ const SignUpForm = () => {
               name="region"
               render={({ field }) => {
                 return (
-                  <Select
-                    {...field}
-                    label="State/Province"
-                    error={errors["region"]}
-                    touched={touched["region"]}
-                    options={regionsOptions$(regions)}
-                    style={styles.select}
-                  />
+                  <div style={styles.selectWrapper}>
+                    <Select
+                      {...field}
+                      label="State/Province"
+                      disabled={loadingRegions}
+                      error={errors["region"]}
+                      touched={touched["region"]}
+                      options={regionsOptions$(regions)}
+                      style={styles.select}
+                    />
+                    {loadingRegions && (
+                      <Spinner style={styles.spinner} name="double-bounce" />
+                    )}
+                  </div>
                 );
               }}
             />

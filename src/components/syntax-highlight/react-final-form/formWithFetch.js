@@ -1,6 +1,6 @@
 const codeString = `import React, { useState } from "react";
-
 import _ from "lodash";
+import Spinner from "react-spinkit";
 import { Form, Field } from "react-final-form";
 import { createSelector } from "reselect";
 
@@ -9,12 +9,20 @@ import { Button, TextField, Select } from "../UI-kit";
 
 // Hooks
 import useCountries from "../../hooks/useCountries";
-import userRegions from "../../hooks/userRegions";
+import useRegions from "../../hooks/useRegions";
 
 // Styles
 import commonStyles from "../styles";
 const styles = {
-  select: { minWidth: 233, maxWidth: 233 }
+  select: { minWidth: 233, maxWidth: 233 },
+  selectWrapper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  spinner: {
+    position: "absolute"
+  }
 };
 
 // Local Selectors
@@ -50,7 +58,7 @@ const initialValues = {
 const SignUpForm = () => {
   const [country, setCountry] = useState(null);
   const [countries, loadingCountries] = useCountries();
-  const [regions, loadingRegions] = userRegions(country);
+  const [regions, loadingRegions] = useRegions(country);
 
   return (
     <div>
@@ -107,31 +115,43 @@ const SignUpForm = () => {
             </Field>
             <Field name="country">
               {({ input, meta }) => (
-                <Select
-                  {...input}
-                  label="Country"
-                  error={meta.error}
-                  touched={meta.touched}
-                  options={countiesOptions$(countries)}
-                  style={styles.select}
-                  onChange={e => {
-                    form.change("country", e.target.value);
-                    setCountry(e.target.value);
-                    form.change("region", "");
-                  }}
-                />
+                <div style={styles.selectWrapper}>
+                  <Select
+                    {...input}
+                    disabled={loadingCountries}
+                    label="Country"
+                    error={meta.error}
+                    touched={meta.touched}
+                    options={countiesOptions$(countries)}
+                    style={styles.select}
+                    onChange={e => {
+                      form.change("country", e.target.value);
+                      setCountry(e.target.value);
+                      form.change("region", "");
+                    }}
+                  />
+                  {loadingCountries && (
+                    <Spinner style={styles.spinner} name="double-bounce" />
+                  )}
+                </div>
               )}
             </Field>
             <Field name="region">
               {({ input, meta }) => (
-                <Select
-                  {...input}
-                  label="State/Province"
-                  error={meta.error}
-                  touched={meta.touched}
-                  options={regionsOptions$(regions)}
-                  style={styles.select}
-                />
+                <div style={styles.selectWrapper}>
+                  <Select
+                    {...input}
+                    label="State/Province"
+                    disabled={loadingRegions}
+                    error={meta.error}
+                    touched={meta.touched}
+                    options={regionsOptions$(regions)}
+                    style={styles.select}
+                  />
+                  {loadingRegions && (
+                    <Spinner style={styles.spinner} name="double-bounce" />
+                  )}
+                </div>
               )}
             </Field>
             <Button
