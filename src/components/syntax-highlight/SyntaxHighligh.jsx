@@ -1,6 +1,6 @@
 import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Icon } from "rmwc";
 import { ReactComponent as Logo } from "../../github-logo.svg";
 
@@ -16,19 +16,20 @@ const styles = {
     alignItems: "flex-end",
     padding: "5px 5px 15px"
   },
-  icon: { marginLeft: 5 }
+  icon: { marginLeft: 5 },
+  customStyle: {
+    background: "#ECECEC",
+    borderLeft: "2px solid #9B65DE",
+    maxHeight: 400
+  }
 };
 const SyntaxHighlight = ({ codeString, codeUrl }) => {
   return (
     <div style={styles.wrapper}>
       <SyntaxHighlighter
         language="javascript"
-        style={prism}
-        customStyle={{
-          background: "#ECECEC",
-          borderLeft: "2px solid #9B65DE",
-          maxHeight: 400
-        }}
+        style={solarizedlight}
+        customStyle={styles.customStyle}
       >
         {codeString}
       </SyntaxHighlighter>

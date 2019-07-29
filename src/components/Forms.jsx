@@ -113,8 +113,8 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: "95%",
-    margin: "5px 20px"
+    width: "85%",
+    margin: "5px auto"
   },
   tabBar: nTabs => ({
     margin: "0 0 -8px auto",
